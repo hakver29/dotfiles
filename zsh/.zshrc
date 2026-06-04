@@ -2,6 +2,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -22,6 +24,7 @@ alias price="~/projects/stb/backend/dss-insurance-price-rest-api/"
 alias advisor="~/projects/stb/frontend/dss-insurance-advisor-web/"
 alias lisa="~/projects/stb/backend/start-lisa-services/"
 alias lisapom="/Users/hakonveras/.m2/repository/storebrand/lisa/services/lisa-services-api"
+alias scripts-stb="~/projects/stb/scripts/"
 
 alias nvim-conf="~/.config/nvim/"
 alias dotfiles="~/.config/dotfiles/"
@@ -39,6 +42,10 @@ alias pn="pnpm"
 alias l="lsd -la"
 
 alias k="kubectl"
+
+export do="--dry-run=client -o yaml"
+export now="--force --grace-period=0"
+
 #source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 alias cloud-sql-proxy-test="cloud-sql-proxy --auto-iam-authn --port 5433 test-insurance-cloudsql-ef93:europe-west4:insurance-instance-01"
@@ -75,3 +82,11 @@ export PATH="/Users/hakonveras/.rd/bin:$PATH"
 export GPG_TTY=$(tty)
 
 export PATH="${HOME}/.local/bin:${PATH}"
+
+# pnpm
+export PNPM_HOME="/Users/hakonveras/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
